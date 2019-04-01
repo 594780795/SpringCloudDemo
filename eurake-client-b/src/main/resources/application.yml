@@ -1,0 +1,21 @@
+spring:
+    application:
+        name: eureka-provider
+    mvc:
+        view:
+            prefix : /WEB-INF/views/
+            suffix : .jsp
+server:
+    port: 1111
+# eureka.client.registerWithEureka ：表示是否将自己注册到Eureka Server，默认为true。
+# 由于当前这个应用就是Eureka Server，故而设为false
+eureka:
+    client:
+        registerWithEureka: true
+        # eureka.client.fetchRegistry ：表示是否从Eureka Server获取注册信息，默认为true。因为这是一个单点的Eureka Server，
+        # 不需要同步其他的Eureka Server节点的数据，故而设为false。
+        fetchRegistry: true
+        #serviceUrl.defaultZone ：设置与Eureka Server交互的地址，查询服务和注册服务都需要依赖这个地址。默认是
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka, http://localhost:8762/eureka
+
