@@ -20,3 +20,8 @@ eureka:
         serviceUrl:
             defaultZone: http://peer2:8762/eureka/
 
+#日志配置
+logging:
+    path: /logs
+    level: info
+

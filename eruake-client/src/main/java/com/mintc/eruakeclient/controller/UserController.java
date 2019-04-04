@@ -8,28 +8,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.ReentrantLock;
 
 @RestController
 public class UserController {
 
-    public static Integer count = 0;
+//    public static AtomicInteger count = new AtomicInteger(0);
+    public static int count = 0;
 
     @RequestMapping(value = "/search/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person hello(@PathVariable Integer id, HttpServletRequest request) {
-        Person person = new Person();
-        person.setId(1);
-        person.setName("mintc");
-        person.setAge(99);
-        person.setMessage(request.getRequestURL().toString());
-        return person;
+    public String hello(@PathVariable Integer id, HttpServletRequest request) {
+        int i = 1/0;
+        return "hello";
     }
-
-
 
     @RequestMapping(value = "/error22", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String error() {
         try {
-            count ++;
+//            count.getAndIncrement();
+            count++;
             System.out.println("error22:" + count);
             Thread.sleep(2000);
         } catch (InterruptedException e) {
